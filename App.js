@@ -5,20 +5,23 @@ import GoalInput from './components/GoalInput';
 
 
 export default function App() {
-
   const [eneteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([])
+
+  function goalInputHandler(eneteredText) { setEnteredGoalText(eneteredText) };
+  function addGoalHandler() { setCourseGoals(currentCourseGoals => [...currentCourseGoals, { text: eneteredGoalText, key: Math.random().toString() }]) };
+  function deleteGoalHandler() { console.log('delete') };
 
   return (
     <View style={styles.appContainer}>
       <GoalInput
-        eneteredGoalText={eneteredGoalText}
-        setEnteredGoalText={setEnteredGoalText}
-        setCourseGoals={setCourseGoals}
+        goalInputHandler={goalInputHandler}
+        addGoalHandler={addGoalHandler}
       />
 
       <GoalContainer
         courseGoals={courseGoals}
+        deleteGoalHandler={deleteGoalHandler}
       />
     </View>
   );
