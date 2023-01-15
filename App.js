@@ -1,65 +1,33 @@
 import { useState } from 'react';
-import { Button, StyleSheet, TextInput, View, FlatList } from 'react-native';
-import GoalItem from './components/GoalItem';
+import { StyleSheet, View, FlatList } from 'react-native';
+import GoalContainer from './components/GoalContainer';
+import GoalInput from './components/GoalInput';
+
 
 export default function App() {
 
   const [eneteredGoalText, setEnteredGoalText] = useState('');
   const [courseGoals, setCourseGoals] = useState([])
 
-  function goalInputHandler(eneteredText) { setEnteredGoalText(eneteredText) };
-
-  function addGoalHandler() { setCourseGoals(currentCourseGoals => [...currentCourseGoals, { text: eneteredGoalText, key: Math.random().toString() }]) };
-
   return (
     <View style={styles.appContainer}>
+      <GoalInput
+        eneteredGoalText={eneteredGoalText}
+        setEnteredGoalText={setEnteredGoalText}
+        setCourseGoals={setCourseGoals}
+      />
 
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='Your course goal!' onChangeText={goalInputHandler} />
-        <Button title='Add Goal' onPress={addGoalHandler} />
-      </View>
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return <GoalItem text={itemData.item.text} />
-          }}
-        // keyExtractor={(item, index) => {return item.id}}
-        />
-
-      </View>
+      <GoalContainer
+        courseGoals={courseGoals}
+      />
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     padding: 50,
     paddingHorizontal: 16,
-    // backgroundColor: '#DE5D82'
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#ccccccc',
-    width: '70%',
-    marginRight: 8,
-    padding: 8
-  },
-  goalsContainer: {
-    flex: 7,
-    flexDirection: 'column',
-    // alignItems: 'center'
   }
 });
