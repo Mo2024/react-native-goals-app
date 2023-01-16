@@ -1,25 +1,37 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
+import { MaterialIcons } from '@expo/vector-icons';
 
 function GoalItem(props) {
     return (
-        <Pressable onPress={props.deleteGoalHandler}>
-            <View style={styles.goalContainer}>
-                <Text style={styles.goalText}> {props.text} </Text>
+        <View style={styles.goalContainer}>
+            <Text style={styles.goalText}> {props.text} </Text>
+            <View style={styles.svgView} >
+                <Pressable onPress={props.deleteGoalHandler}>
+                    <MaterialIcons name="delete" size={20} color="red" />
+                </Pressable>
             </View>
-        </Pressable>
+
+        </View>
     )
 };
 
 const styles = StyleSheet.create({
     goalContainer: {
+        flex: 1,
         width: '90%',
         margin: 8,
-        padding: 15,
+        padding: 19,
         borderRadius: 7,
-        backgroundColor: '#5e0acc'
+        backgroundColor: '#5e0acc',
+        flexDirection: 'row',
     },
     goalText: {
-        color: 'white'
+        color: 'white',
+        fontSize: 15
+    },
+    svgView: {
+        flex: 1,
+        flexDirection: "row-reverse",
     }
 });
 
