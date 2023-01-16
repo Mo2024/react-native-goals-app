@@ -10,7 +10,11 @@ export default function App() {
 
   function goalInputHandler(eneteredText) { setEnteredGoalText(eneteredText) };
   function addGoalHandler() { setCourseGoals(currentCourseGoals => [...currentCourseGoals, { text: eneteredGoalText, key: Math.random().toString() }]) };
-  function deleteGoalHandler() { console.log('delete') };
+  function deleteGoalHandler(key) {
+    setCourseGoals(currentCourseGoals => {
+      return currentCourseGoals.filter((goal) => goal.key !== key);
+    })
+  };
 
   return (
     <View style={styles.appContainer}>

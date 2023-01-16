@@ -6,7 +6,7 @@ function GoalItem(props) {
         <View style={styles.goalContainer}>
             <Text style={styles.goalText}> {props.text} </Text>
             <View style={styles.svgView} >
-                <Pressable onPress={props.deleteGoalHandler}>
+                <Pressable onPress={props.deleteGoalHandler.bind(this, props.keyID)}>
                     <MaterialIcons name="delete" size={20} color="red" />
                 </Pressable>
             </View>
