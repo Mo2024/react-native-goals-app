@@ -1,16 +1,12 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons';
 
+function changeStyle() { return pressedData.pressed && styles.pressedItem }
 function GoalItem(props) {
     return (
         <View style={styles.goalContainer}>
-            <Text style={styles.goalText}> {props.text} </Text>
-            <View style={styles.svgView} >
-                <Pressable onPress={props.deleteGoalHandler.bind(this, props.keyID)}>
-                    <MaterialIcons name="delete" size={20} color="red" />
-                </Pressable>
-            </View>
-
+            <Pressable android_ripple={{ color: 'white' }} style={[(pressedData) => pressedData.pressed && styles.pressedItem, styles.pressableContainer]} onPress={props.deleteGoalHandler.bind(this, props.keyID)}>
+                <Text style={styles.goalText}>{props.text}</Text>
+            </Pressable>
         </View>
     )
 };
@@ -18,20 +14,21 @@ function GoalItem(props) {
 const styles = StyleSheet.create({
     goalContainer: {
         flex: 1,
-        width: '90%',
         margin: 8,
-        padding: 19,
         borderRadius: 7,
         backgroundColor: '#5e0acc',
-        flexDirection: 'row',
+    },
+    pressedItem: {
+        opacity: 0.5
     },
     goalText: {
+        padding: 8,
         color: 'white',
         fontSize: 15
     },
-    svgView: {
-        flex: 1,
-        flexDirection: "row-reverse",
+    pressableContainer: {
+
+
     }
 });
 
