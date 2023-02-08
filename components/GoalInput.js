@@ -2,6 +2,7 @@ import { StyleSheet, View, Button, TextInput, Modal, Image } from "react-native"
 
 function GoalInput(props) {
     return (
+
         <Modal visible={props.visibility} animationType="slide">
             <View style={styles.inputContainer}>
                 <Image style={styles.image} source={require('../assets/images/goal.png')} />
@@ -25,9 +26,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 24,
         borderBottomWidth: 1,
-        borderBottomColor: '#cccccc'
+        borderBottomColor: '#cccccc',
+        backgroundColor: '#b180f0'
 
     },
     textInput: {
@@ -35,7 +36,10 @@ const styles = StyleSheet.create({
         borderColor: '#ccccccc',
         width: '75%',
         padding: 8,
-        borderRadius: 7
+        borderRadius: 7,
+        backgroundColor: '#e4d0ff',
+        borderColor: '#e4d0ff',
+        color: '#120438'
     },
     buttonContainer: {
         flexDirection: "row",
